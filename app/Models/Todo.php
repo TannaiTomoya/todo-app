@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Models;
+
 use Database\Factories\TodoFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+
 /**
  * @property int $id
  * @property int $user_id
@@ -22,9 +25,10 @@ class Todo extends Model
 {
     /** @use HasFactory<TodoFactory> */
     use HasFactory;
+
     /**
      * @return array<string, string>
-    */
+     */
     protected function casts(): array
     {
         return [
@@ -32,6 +36,7 @@ class Todo extends Model
             'due_at' => 'datetime',
         ];
     }
+
     /**
      * この Todo を作ったユーザー。
      *
@@ -41,6 +46,7 @@ class Todo extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     /**
      * ログイン中のユーザーが作った Todo か。
      */
